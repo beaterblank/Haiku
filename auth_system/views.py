@@ -15,7 +15,7 @@ def login_user(request,*args,**kwargs):
 
         if user is not None:
             login(request,user)
-            return redirect('/home')
+            return redirect(f'/user/{username}/1')
         
         if user is None:
             messages.error(request,('Invalid Credentials'))
@@ -30,6 +30,8 @@ def logout_user(request,*args,**kwargs):
     return redirect('/login')
 
 def register_user(request,*args,**kwargs):
+    logout(request)
+    
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():

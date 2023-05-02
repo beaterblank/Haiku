@@ -21,7 +21,7 @@ from django.urls import include
 from django.shortcuts import render
 
 from auth_system.views import login_user,logout_user,register_user
-from application.views import home
+from application.views import user,post
 
 def base(request):
     return render(request, 'pages/home.html')
@@ -29,9 +29,10 @@ def base(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',base),
-    path('home/',home),
+    path('user/<username>/<int:page>',user),
     path('login/',login_user),
     path('logout/',logout_user),
     path('register/',register_user),
+    path('post/',post)
 ]
   

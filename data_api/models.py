@@ -13,7 +13,7 @@ class Content(models.Model):
 
 
 class Like(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
     content = models.ForeignKey(Content, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -21,7 +21,7 @@ class Like(models.Model):
 
 
 class Follow(models.Model):
-    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='follower_set')
+    follower = models.OneToOneField(User, on_delete=models.CASCADE, related_name='follower_set',primary_key=True)
     followee = models.ForeignKey(User, on_delete=models.CASCADE, related_name='followee_set')
 
     class Meta:

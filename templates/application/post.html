@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Post</h1>
+<form method="POST">
+    {% csrf_token %}
+    <textarea name="body" class="nes-textarea" placeholder="What's happening?" rows="4" cols="100"></textarea><br>
+    <button type="submit" class="nes-btn is-primary">Post !</button><br><br>
+</form>
+
+{% endblock content %}

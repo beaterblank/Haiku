@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>Haiku</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        .main {
+          font-family: 'Press Start 2P', cursive;
+          margin: 1%;
+        }
+        .small {
+            font-size: 5px;
+        }
+        div{
+            margin: 10px;
+        }
+        input{
+            font-family: inherit;
+        }
+      </style>
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+</head>
+<body>
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+    {% endif %} 
+
+    <div class="main">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+</body>
+</html>

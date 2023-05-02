@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <h1>{{ user.username }}</h1><p>Followers: <span id="follower">{{ data.follower_count }}</span>, Following: <span id="follower">{{ data.followee_count }}</span></p>
+</div>
+{% if not data.is_self %}
+<form method="POST">
+{% csrf_token %}
+{% if data.is_following %}
+<div>
+    <button type="submit" class="nes-btn is-primary">Unfollow</button>
+</div>
+{% else %}
+<div>
+    <button type="submit" class="nes-btn is-primary">Follow</button>
+</div>
+{% endif %}
+{% endif %}
+</form>
+<h2>Posts</h2>
+
+{% if data.page > 1 %}
+<a href="/user/{{user.username}}/{{ data.page|add:-1 }}"> <- * {{ data.page|add:-1 }}</a>
+{% endif %}
+{{ data.page}}
+<a href="/user/{{user.username}}/{{ data.page|add:1 }}">{{ data.page|add:1 }} * -></a>
+
+{% if data.content_list %}
+<div>
+{% for content in data.content_list %}
+<div>
+<h3>{{ content.username }}</h3>
+<p class="small">{{content.created_at}}</p>
+<p>{{content.body}}</p>
+</div>
+{% endfor %}
+</div>
+{% else %}
+<div>
+    <p>nothing here</p>
+</div>
+{% endif %}
+
+
+<script>
+    
+</script>
+{% endblock content %}
